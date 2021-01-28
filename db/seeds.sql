@@ -1,3 +1,3 @@
-INSERT INTO burgers (panini_name, eaten) VALUES ("Cheese burger", FALSE);
-INSERT INTO burgers (panini_name, eaten) VALUES ("Veggie burger", FALSE);
-INSERT INTO burgers (panini_name, eaten) VALUES ("Bacon cheese burger", FALSE);
+INSERT INTO burgers (name, eaten) VALUES ("Chicken Panini", FALSE);
+INSERT INTO burgers (name, eaten) VALUES ("Grilled Ham Panini", FALSE);
+INSERT INTO burgers (name, eaten) VALUES ("Italian Grilled Cheese Panini", FALSE);
