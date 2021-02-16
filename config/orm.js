@@ -24,7 +24,7 @@ var orm = {
 
 
     create: function(tableInput, val, cb) {
-            connection.query("INSERT INTO " + tableInput + " (panini_name) VALUES ('" + val + "');",
+            connection.query("INSERT INTO " + tableInput + " (name) VALUES ('" + val + "');",
             function(err, result) {
                 if (err) throw err;
                 cb(result);
@@ -35,3 +35,4 @@ var orm = {
      
 
 module.exports = orm;
+

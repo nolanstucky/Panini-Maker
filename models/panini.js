@@ -1,23 +1,23 @@
 
 var orm = require("../config/orm.js");
 
-var panini = {
+var paninis = {
     all: function(cb) {
         
-        orm.all("panini", function(res) {
+        orm.all("paninis", function(res) {
             cb(res);
         });
     },
 
     update: function(id, cb) {
-        orm.update("panini", id, cb);  
+        orm.update("paninis", id, cb);  
     
     },
 
     create: function(name, cb) {
-        orm.create("panini", name, cb);
+        orm.create("paninis", name, cb);
     },
 
 };
 
-module.exports = panini;
+module.exports = paninis;

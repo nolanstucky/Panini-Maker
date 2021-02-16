@@ -4,14 +4,17 @@ const express = require("express");
 // Create the router for the app, and export the router at the end of your file.
 const router = express.Router();
 
-const panini = require("../models/panini.js")
+const paninis = require("../models/panini.js")
 
 // Create routes
 
 router.get('/', function (req, res) {
-    panini.all(function(data) {
+    paninis.all(function(data) {
         console.log(data);
-        res.render("index", {data});
+        var obj = {
+          paninis: data
+        }
+        res.render("index", obj);
     });   
 });
 
@@ -19,7 +22,7 @@ router.get('/', function (req, res) {
 router.put("/api/panini/:id", function(req, res) {
     var condition = `id = ${req.params.id}`;
     console.log(condition);
-    cat.update({
+    paninis.update({
       eaten: req.body.eaten
     }, condition, function(result) {
       if (result.changedRows == 0) {
@@ -33,7 +36,7 @@ router.put("/api/panini/:id", function(req, res) {
 
 
 router.post("/api/panini", function(req, res) {
-    cat.create([
+    paninis.create([
       "name", "eaten"
     ], [
       req.body.name, req.body.eaten
