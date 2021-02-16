@@ -21,7 +21,7 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/paniniController.js");
 
 app.use(routes);
-
+app.use("/public", express.static('./public/'));
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started
