@@ -4,12 +4,12 @@ const express = require("express");
 // Create the router for the app, and export the router at the end of your file.
 const router = express.Router();
 
-const paninis = require("../models/panini.js")
+const orm = require("../config/orm")
 
 // Create routes
 
 router.get('/', function (req, res) {
-    paninis.all(function(data) {
+    orm.all('paninis',function(data) {
         console.log(data);
         var obj = {
           paninis: data
@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 router.put("/api/panini/:id", function(req, res) {
     var condition = `id = ${req.params.id}`;
     console.log(condition);
-    paninis.update({
+    orm.update({
       eaten: req.body.eaten
     }, condition, function(result) {
       if (result.changedRows == 0) {
@@ -35,7 +35,8 @@ router.put("/api/panini/:id", function(req, res) {
 
 
 router.post("/api/panini", function(req, res) {
-    paninis.create([
+  console.log(req.body);
+    orm.create('paninis',[
       "name", "eaten"
     ], [
       req.body.name, req.body.eaten
@@ -45,10 +46,10 @@ router.post("/api/panini", function(req, res) {
     });
   });
 
-router.delete("/api/burgers/:id", function(req,res){
+router.delete("/api/panini/:id", function(req,res){
   var condition = `id = ${req.params.id}`;
-
-  paninis.delete(condition, function(result){
+  console.log(req.params.id)
+  orm.delete(condition, function(result){
     if (result.changedRows == 0) {
       return res.status(404).end();
     } else {

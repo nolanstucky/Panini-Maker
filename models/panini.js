@@ -9,14 +9,24 @@ var paninis = {
         });
     },
 
-    update: function(id, cb) {
-        orm.update("paninis", id, cb);  
+    update: function(obj, id, cb) {
+        orm.update("paninis", obj, id, function(res){
+            cb(res);
+        });  
     
     },
 
-    create: function(name, cb) {
-        orm.create("paninis", name, cb);
+    create: function(cols, name, cb) {
+        orm.create("paninis", cols, name, function(res) {
+            cb(res);
+        });
     },
+
+    delete: function(con, cb) {
+        orm.delete("paninis", con, function(res){
+            cb(res)
+        })
+    }
 
 };
 
