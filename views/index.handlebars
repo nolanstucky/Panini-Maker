@@ -1,59 +1,62 @@
- <div id="panini">                   
-
- <div class="container">  
-     <div id="header">
-        {{!-- <div class="jumbotron jumbotron-fluid"> --}}
-            <h1 id="heading1">Panini Time</h1>           
-            <p>Anyone want some panini?</p>
-            {{!-- <p class="lead text-center" id="header1">Order Delicious Burgers...</p> --}}
-        </div>
-       
+<div id="panini">
 
     <div class="container">
+        <br/>
+        <div class="container ">
+            <div class="row">
+                <div class="col-xs-3">
+                </div>
+                <div id="add" class="col-xs-5 create-panini">
+                    <form class="form-group">
+                        <div id="header">
+                            {{!-- <div class="jumbotron jumbotron-fluid"> --}}
+                                <h1 id="heading1">Panini Time</h1>
+                                <p>Anyone want some panini?</p>
+                                {{!-- <p class="lead text-center" id="header1">Order Delicious Burgers...</p> --}}
+                            </div>
+                            <input type="text" name="name" class="form-control" value="" id="enter_text">
+                            <br>
+                            <button type="submit" class="btn btn-primary" id="submit-button">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="container">
         <div class="row">
-            <div id="add" class="col-xs-6" "text-center enter_section" >   
-                <form class="form-group"> 
-                    <input type="text" name="name" class="form-control" 
-                    value="" id="enter_text"> 
-                    <br>   
-                    <button type="submit" class="btn btn-primary" id="submit-button">SUBMIT</button>                      
-                </form>
-                <br>
-                <p>"What panini do you want?"</p>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-4 create-panini">
+                <div class="row">
+                    <form class="form-group">
+                        {{#each paninis}}
+                        {{#unless this.eaten}}
+                        <div class="col-xs-9 text-center">
+                            <div class="panini-text" id="uneaten-burger">{{this.id}}. {{this.name}}</div>
+                        </div>
+
+                        <div class="col-xs-3 text-center">
+                            <button class="btn btn-default eat-it" data-id="{{id}}" data-eaten="{{eaten}}">DEVOUR
+                                IT!</button>
+                        </div>
+                        <br/>
+                        {{/unless}}
+                        {{/each}}
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-xs-1"></div>
+            <div class="col-xs-4" "text-center" class="task" id="eaten">
+                {{#each paninis}}
+                {{#if this.eaten}}
+                <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}} " readonly>
+                <button class="btn btn-default delete-it" data-id="{{id}}" data-eaten="{{eaten}}">DELETE IT!</button>
+                {{/if}}
+                {{/each}}
+                <hr>
             </div>
         </div>
     </div>
-</div>
-    
-    
-    <div class="row">
-        <div class="col-xs-6 text-center" class="task"> 
-            <div class="row">
-                {{#each paninis}}
-                    {{#unless this.eaten}}        
-                <div class="col-xs-9 text-center"> 
-                    <div id="uneaten-burger">{{this.id}}. {{this.name}}</div>
-                </div>  
-            
-                <div class="col-xs-3 text-center">                                        
-                        <button class="btn btn-default eat-it" data-id="{{id}}" data-eaten="{{eaten}}">DEVOUR IT!</button>                                                    
-                </div>
-                    {{/unless}}
-                {{/each}}  
-            </div>
-        </div>
-       
-  
-        <div class="col-xs-4" "text-center" class="task" id="eaten">     
-            {{#each paninis}}
-                {{#if this.eaten}}
-                    <input class="form-control" type="text" placeholder=
-                    "{{this.id}}. {{this.name}}" readonly>
-                {{/if}}
-            {{/each}}
-            <hr>
-        </div>
-    </div>  
-</div>  
-                    
-

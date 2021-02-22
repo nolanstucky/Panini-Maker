@@ -1,7 +1,7 @@
 
 var orm = require("../config/orm.js");
 
-var paninis = {
+var panini = {
     all: function(cb) {
         
         orm.all("paninis", function(res) {
@@ -30,4 +30,4 @@ var paninis = {
 
 };
 
-module.exports = paninis;
+module.exports = panini;

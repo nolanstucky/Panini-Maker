@@ -4,12 +4,12 @@ const express = require("express");
 // Create the router for the app, and export the router at the end of your file.
 const router = express.Router();
 
-const orm = require("../config/orm")
+const panini = require("../models/panini.js")
 
 // Create routes
-
+//Route that grabs all of the panini data from the db and renders it to index.handlebars
 router.get('/', function (req, res) {
-    orm.all('paninis',function(data) {
+    panini.all(function(data) {
         console.log(data);
         var obj = {
           paninis: data
@@ -18,11 +18,11 @@ router.get('/', function (req, res) {
     });   
 });
 
-
+//Route that updates the db with req.body.eaten
 router.put("/api/panini/:id", function(req, res) {
     var condition = `id = ${req.params.id}`;
     console.log(condition);
-    orm.update({
+    panini.update({
       eaten: req.body.eaten
     }, condition, function(result) {
       if (result.changedRows == 0) {
@@ -33,10 +33,10 @@ router.put("/api/panini/:id", function(req, res) {
     });
   });
 
-
+//Route that creates a new panini with the info from req.body
 router.post("/api/panini", function(req, res) {
   console.log(req.body);
-    orm.create('paninis',[
+    panini.create([
       "name", "eaten"
     ], [
       req.body.name, req.body.eaten
@@ -45,11 +45,11 @@ router.post("/api/panini", function(req, res) {
       res.json({ id: result.insertId });
     });
   });
-
+//Route that takes panini id and deletes it from the db
 router.delete("/api/panini/:id", function(req,res){
   var condition = `id = ${req.params.id}`;
   console.log(req.params.id)
-  orm.delete(condition, function(result){
+  panini.delete(condition, function(result){
     if (result.changedRows == 0) {
       return res.status(404).end();
     } else {

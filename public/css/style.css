@@ -1,0 +1,12 @@
+body {
+    background-image: url('/public/assets/panini\ background.JPG')
+}
+
+.create-panini {
+    background-color: pink;
+}
+
+.panini-text {
+    font-weight: bold;
+    font-size: 20px;
+}

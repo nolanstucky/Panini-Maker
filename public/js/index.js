@@ -29,20 +29,21 @@ $(document).ready(function(){
             data: ifEaten
         }).then(
             function() {
-                // location.reload();
+                location.reload();
             }
         )
 
     })
 
     $(".delete-it").on("click", function(event){
-        let id = $(this).data("id");
+        let paniniId = $(this).data("id");
         console.log("test delete button")
-        $.ajax(`/api/panini/${id}`,{
+        location.reload();
+        $.ajax(`/api/panini/${paniniId}`,{
             type: "DELETE"
         }).then(
             function() {
-                // location.reload();
+                location.reload();
             }
         )
     })
