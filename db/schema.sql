@@ -1,4 +1,4 @@
-DROP DATABASE panini_db;
+
 CREATE DATABASE panini_db;
 USE panini_db;
 
