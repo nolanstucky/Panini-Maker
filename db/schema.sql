@@ -1,6 +1,7 @@
+USE qevzd1149n9d7zlk;
 
-CREATE DATABASE panini_db;
-USE panini_db;
+DROP TABLE IF EXISTS paninis;
+
 
 CREATE TABLE paninis
 (
